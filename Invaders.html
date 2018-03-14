@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Space Invaders Game!</title>
+        <style>
+            div#sky{
+                background-image: url("sky.jpg");
+                background-size: cover;
+                height: 700px;
+                width: 1000px;
+            }
+            div#hero{
+                position: absolute;
+                background-image: url("ship.gif");
+                background-size: cover;
+                width: 40px;
+                height: 40px;
+            }
+            div .enemy{
+                position: absolute;
+                background-image: url("enemyShip.gif");
+                /* background-color: black; */
+                /* background-size: contain; */
+                background-size: cover;
+                width: 50px; 
+                height: 50px;
+                display: inline-block;
+            }
+            div#fire{
+                position: absolute;
+                background: yellow;
+                width: 5px;
+                height: 5px;
+                border: 1px solid red;
+            }
+        </style>
+        <script>
+            var hero ={
+                x:300,
+                y:600
+            }
+            var fire = {
+                x: hero.x,
+                y: hero.y - 50 
+            }
+            
+            function displayHero(){
+                document.getElementById("hero").style.top =hero.y;
+                document.getElementById("hero").style.top =hero.x;
+            }
+
+            /*rendering enemies*/
+            function displayEnemies(){
+                var content="";
+                var left = 100;
+                for(let i=0; i< enemies; i++ ){
+                    content += '<div class = "enemy" style ="top: 100px; left:'+ left+ 'px"></div>';
+                    left +=200;
+                }   
+            }
+
+            displayHero();
+            displayEnemies();
+            displayFire(); 
+            // would use the document.onKeyDown =fucntion (e){
+                //if e.keyCode == idk..37?
+                    //move up ship
+                //}
+                //if e.keyCode == idk..39?
+                    //move down ship
+                //}
+
+                //forward thoughts of how i would go further (if I HAD the time ;p...ouch)..
+                // same for the bullets/fire, but on space bar and till end of screen would use the setInterval(displayFire(), 100)
+                // same for the enemies for them to move down, at same interval, would increment their y position...
+                // when the y coordinates for the ship and any of enemies are same, will make the innerHTML blank for the ship (that's for the collision)
+
+
+
+        </script>
+    </head>
+    <body>
+        <!-- Need to construct how it might look -->
+        <div id = "sky" > 
+            
+            <div class = "enemy" style ="top: 100px; left: 100px"></div>
+            <div class = "enemy" style ="top: 100px; left: 300px"></div>
+            <div class = "enemy" style ="top: 100px; left: 500px"></div>
+
+            <div id = "fire" style = "top: 510px; left: 300px"> </div> 
+            <div id = "hero" style = "top: 600px; left: 300px"></div>
+
+        </div>
+
+    </body>
+</html>
